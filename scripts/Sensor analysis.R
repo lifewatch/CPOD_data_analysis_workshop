@@ -2,9 +2,10 @@
 
 #remove everything before start of the script
 rm(list=ls())
+getwd() # Check your current working directory.
 #use data from 2016 for this analysis. 
 #quality classes of this data Hi and Mod
-df <- read.table("Hour2016.tab", header = TRUE, sep = "\t", fill = TRUE)
+df <- read.table("Data/Hour2016.tab", header = TRUE, sep = "\t", fill = TRUE)
 head(df)
 df <- as.data.frame(df)
 
@@ -19,7 +20,7 @@ library(lubridate)
 library(tidyr)
 library(dplyr)
 #check for NA values
-table(is.na(df1))
+table(is.na(df))
 levels(df$Station)
 #combine cpod stations in the same zone
 #new column zone, hiermee werken ipv station!
