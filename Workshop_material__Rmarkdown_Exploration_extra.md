@@ -402,7 +402,7 @@ Making a graph in ggplot: an example to test the data availability.
 ggplot(data = poddata_day, aes(x= Time, y = Quality)) # This makes an empty plot
 ```
 
-![](Workshop_material__Rmarkdown_Exploration_extra_files/figure-markdown_github/unnamed-chunk-40-1.png)
+![](Workshop_material__Rmarkdown_Exploration_extra_files/figure-markdown_github/unnamed-chunk-40-1.png?raw=true)
 
 Three ways to code the same plot.
 
