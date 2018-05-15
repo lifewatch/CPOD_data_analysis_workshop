@@ -4,6 +4,7 @@ library(rgdal)
 library(lubridate)
 
 #### Bathymetry ####
+# source: EMODnet: portal.emodnet-bathymetry.eu/
 bathy <- read.table("Data day 1/Metadata/bathy.txt")
 poddata$x <- round(poddata$Longitude, digits = 2)
 poddata$y <- round(poddata$Latitude, digits = 2)
@@ -32,6 +33,7 @@ ggplot() +
   geom_tile(aes(x=x, y=y, fill = -z), data = bathy)
 
 #### Day and night ####
+# Source: US Naval Observatory; Location E002° 45’, N51° 30’;UTC
 sunrise_set <- data.frame(read.table("Data day 1/Metadata/sunrise_set.txt", " ", header =T))
 
 sunrise_set <- select(sunrise_set, -X)
@@ -49,6 +51,7 @@ poddata$Day <- ifelse(poddata$Rise < poddata$Time & poddata$Time <= poddata$Set,
 poddata <- select(poddata, -Date, -Rise, -Set)
 
 #### Habitat ####
+# Source: EMODnet: www.emodnet-seabedhabitats.eu/
 habitat_shp <- readOGR("Data day 1/Metadata", layer= "habitat")
 
 habitat_shp@data$ET_ID <- rownames(habitat_shp@data)
@@ -134,6 +137,7 @@ poddata <- select(poddata, -x, -y)
 
 
 #### LifeWatch Temperature and Chlorophyll data ####
+# Source: LifeWatch data explorer: http://www.lifewatch.be/en/lifewatch-data-explorer
 lw_reg <- read.table("Data day 1/Metadata/LW_reg.tab")
 lw_reg$Month <- parse_date_time(as.character(lw_reg$Month), orders = "ymd")
 round(unique(poddata$Latitude), digits = 1) %in% round(unique(lw_reg$Latitude), digits = 1)
